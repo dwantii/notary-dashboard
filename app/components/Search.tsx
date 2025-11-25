@@ -14,9 +14,13 @@ export default function Search() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/search?q=" + encodeURIComponent(query));
+      const res = await fetch("http://localhost:3002/search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
+      });
       const data = await res.json();
-      setResults(data.results || []);
+      setResults(data || []);
     } catch (error) {
       console.error("Search error:", error);
     }

@@ -23,11 +23,10 @@ export async function GET(req: Request) {
     });
 
     const data = await esRes.json();
-
-    return new Response(JSON.stringify(data.hits.hits), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
+      return new Response(JSON.stringify({ results: data.hits.hits }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
   } catch (err) {
     return new Response(JSON.stringify({ error: "Search failed" }), {
       status: 500,

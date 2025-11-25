@@ -2,7 +2,6 @@ services:
   db:
     image: mysql:8.0
     container_name: notary_mysql
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example
       MYSQL_DATABASE: notarydb
